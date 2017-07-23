@@ -18,7 +18,6 @@ class Nav extends Component {
   handleSubmit(e) {
     e.preventDefault();
     console.log(this.props.searchLocation)
-    this.props.changeLocation(this.state.value);
     this.props.searchLocation(this.state.value);
     this.setState({value: ''});
     // invoke apiSearch here
@@ -40,7 +39,6 @@ class Nav extends Component {
 }
 
 Nav.propTypes = {
-  changeLocation: PropTypes.func.isRequired,
   searchLocation: PropTypes.func.isRequired
 }
 

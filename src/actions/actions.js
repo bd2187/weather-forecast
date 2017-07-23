@@ -1,6 +1,13 @@
 import {
-  CHANGE_LOCATION, FETCHING_WEATHER,
-  FETCHING_WEATHER_SUCCESS, FETCHING_WEATHER_FAILURE } from './actionTypes';
+  CHANGE_LOCATION,
+  FETCHING_WEATHER,
+  FETCHING_WEATHER_SUCCESS,
+  FETCHING_WEATHER_FAILURE,
+  TRACKING_LOCATION,
+  TRACKING_LOCATION_SUCCESSFUL,
+  TRACKING_LOCATION_FAILURE,
+  CHANGE_UNIT
+} from './actionTypes';
 import axios from 'axios';
 import api, { apiLonLat } from '../config/api';
 
@@ -45,8 +52,11 @@ export function searchLocation (location) {
     dispatch( fetchingWeather() )
     axios.get(api(location))
       .then((data) => {
+        console.log(data)
         dispatch(fetchingWeatherSuccess(data.data));
-        dispatch(changeLocation(data.data.location.name));
+        dispatch(changeLocation(
+          `${data.data.location.name}, ${data.data.location.region}`
+        ));
         dispatch(updateCurrentWeather(data.data.current))
       })
       .catch(() => dispatch(fetchingWeatherFailure()))
@@ -61,8 +71,11 @@ export function currentLocationCurrentWeather (lon, lat) {
     dispatch( fetchingWeather() )
     axios.get(apiLonLat(lon, lat))
       .then((data) => {
+        console.log(data)
         dispatch(fetchingWeatherSuccess(data.data));
-        dispatch(changeLocation(data.data.location.name));
+        dispatch(changeLocation(
+          `${data.data.location.name}, ${data.data.location.region}`
+        ));
         dispatch(updateCurrentWeather(data.data.current))
       })
       .then(dispatch(trackingLocationSuccessful()))
@@ -72,18 +85,26 @@ export function currentLocationCurrentWeather (lon, lat) {
 
 export function trackingLocation () {
   return {
-    type: 'TRACKING_LOCATION'
+    type: TRACKING_LOCATION
   }
 }
 
 function trackingLocationSuccessful () {
   return {
-    type: 'TRACKING_LOCATION_SUCCESSFUL'
+    type: TRACKING_LOCATION_SUCCESSFUL
   }
 }
 
 export function trackingLocationFailure () {
   return {
-    type: 'TRACKING_LOCATION_FAILURE'
+    type: TRACKING_LOCATION_FAILURE
+  }
+}
+
+
+
+export function changeUnit () {
+  return {
+    type: CHANGE_UNIT
   }
 }

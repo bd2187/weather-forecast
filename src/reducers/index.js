@@ -1,4 +1,9 @@
-import { CHANGE_LOCATION } from '../actions/actionTypes';
+import {
+  CHANGE_LOCATION,
+  TRACKING_LOCATION,
+  TRACKING_LOCATION_SUCCESSFUL,
+  TRACKING_LOCATION_FAILURE
+} from '../actions/actionTypes';
 import forecastReducer from './forecastReducer';
 import { combineReducers } from 'redux';
 
@@ -15,7 +20,7 @@ state = {
 }
 */
 
-function locationReducer (state = null, action) {
+function locationReducer (state = '', action) {
   switch (action.type) {
     case CHANGE_LOCATION:
       return action.location
@@ -24,26 +29,34 @@ function locationReducer (state = null, action) {
   }
 }
 
-function unitReducer (state = 'f', action) {
-  switch (action.type) {
-    case 'CHANGE_UNIT':
-      return state;
-    default:
-      return state;
-  }
-}
-
 function trackingLocationReducer (state = false, action) {
   switch (action.type) {
-    case 'TRACKING_LOCATION':
+    case TRACKING_LOCATION:
       return true
-    case 'TRACKING_LOCATION_SUCCESSFUL':
-    case 'TRACKING_LOCATION_FAILURE':
+    case TRACKING_LOCATION_SUCCESSFUL:
+    case TRACKING_LOCATION_FAILURE:
       return false;
     default:
       return state;
   }
 }
+
+
+
+function unitReducer (state = 'f', action) {
+  switch (action.type) {
+    case 'CHANGE_UNIT':
+      if (state === 'f') {
+        return 'c';
+      }
+      else {
+        return 'f';
+      }
+    default:
+      return state;
+  }
+}
+
 
 const rootReducer = combineReducers({
   location: locationReducer,

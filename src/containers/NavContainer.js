@@ -4,22 +4,20 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Nav from '../components/Nav';
-import { changeLocation, searchLocation } from '../actions/actions';
+import { searchLocation } from '../actions/actions';
 
 function NavContainer (props) {
   return (
-    <Nav changeLocation={props.changeLocation} searchLocation={props.searchLocation} />
+    <Nav searchLocation={props.searchLocation} />
   )
 }
 
 NavContainer.propTypes = {
-  changeLocation: PropTypes.func.isRequired,
-  searchLocation: PropTypes.func.isRequired
+  searchLocation: PropTypes.func.isRequired,
 }
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    changeLocation: changeLocation,
     searchLocation: searchLocation
   }, dispatch);
 }
