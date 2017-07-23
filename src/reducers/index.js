@@ -38,6 +38,7 @@ function trackingLocationReducer (state = false, action) {
     case 'TRACKING_LOCATION':
       return true
     case 'TRACKING_LOCATION_SUCCESSFUL':
+    case 'TRACKING_LOCATION_FAILURE':
       return false;
     default:
       return state;

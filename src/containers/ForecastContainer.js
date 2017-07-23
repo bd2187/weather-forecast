@@ -2,12 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Forecast from '../components/Forecast';
-import { currentLocationCurrentWeather, trackingLocation } from '../actions/actions';
+import {
+  currentLocationCurrentWeather,
+  trackingLocation,
+  trackingLocationFailure
+} from '../actions/actions';
 
 class ForecastContainer extends Component {
   constructor(props) {
     super(props);
     this.success = this.success.bind(this);
+    this.fail = this.fail.bind(this);
   }
   success(position) {
     console.log(position.coords.latitude, position.coords.longitude)
@@ -15,11 +20,10 @@ class ForecastContainer extends Component {
       position.coords.latitude,
       position.coords.longitude
     )
-
-    // this.props.searchLocation('los angeles')
   }
   fail() {
-    console.log('fail')
+    alert("Looks like we can't track your location. In the meantime, search a location to see their forecast");
+    this.props.trackingLocationFailure();
   }
   componentDidMount() {
     if (navigator.geolocation) {
@@ -27,10 +31,12 @@ class ForecastContainer extends Component {
       this.props.trackingLocation()
     }
     else {
-      console.log("Can't identify your location")
+      alert("Looks like we can't track your location. In the meantime, search a location to see their forecast");
+      this.props.trackingLocationFailure();
     }
   }
   render() {
+    console.log(this.props)
     return <Forecast {...this.props} />
   }
 }
@@ -42,6 +48,7 @@ ForecastContainer.propTypes = {
   unit: PropTypes.string.isRequired,
   currentLocationCurrentWeather: PropTypes.func.isRequired,
   trackingLocation: PropTypes.func.isRequired,
+  trackingLocationFailure: PropTypes.func.isRequired,
   tracking: PropTypes.bool.isRequired
 
 }
@@ -61,7 +68,8 @@ function mapDispatchToProps (dispatch) {
     currentLocationCurrentWeather: (lon, lat) => {
       dispatch(currentLocationCurrentWeather(lon, lat))
     },
-    trackingLocation: () => dispatch(trackingLocation())
+    trackingLocation: () => dispatch(trackingLocation()),
+    trackingLocationFailure: () => dispatch(trackingLocationFailure())
   }
 }
 

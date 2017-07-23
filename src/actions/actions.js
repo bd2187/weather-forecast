@@ -81,3 +81,9 @@ function trackingLocationSuccessful () {
     type: 'TRACKING_LOCATION_SUCCESSFUL'
   }
 }
+
+export function trackingLocationFailure () {
+  return {
+    type: 'TRACKING_LOCATION_FAILURE'
+  }
+}
