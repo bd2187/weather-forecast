@@ -66,6 +66,7 @@ export function searchLocation (location) {
 
 
 
+
 export function currentLocationCurrentWeather (lon, lat) {
   return function (dispatch) {
     dispatch( fetchingWeather() )
@@ -100,6 +101,7 @@ export function trackingLocationFailure () {
     type: TRACKING_LOCATION_FAILURE
   }
 }
+
 
 
 
