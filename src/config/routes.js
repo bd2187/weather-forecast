@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import NavContainer from '../containers/NavContainer';
 
-// import containers/components here
+import NavContainer from '../containers/NavContainer';
 
 function Form () {
   return <h1>Form</h1>

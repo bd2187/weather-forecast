@@ -6,18 +6,13 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 import routes from './config/routes';
+import rootReducer from './reducers/index';
 
-// const store = createStore(rootReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer, applyMiddleware(thunk, logger))
 
 render (
-  routes,
+  <Provider store={store}>
+    {routes}
+  </Provider>,
   document.getElementById('app')
 );
-
-/*
-state = {
-  city: '',
-  forecast: [],
-  unit
-}
-*/
