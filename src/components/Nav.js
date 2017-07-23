@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Nav extends Component {
   constructor(props) {
@@ -16,7 +17,10 @@ class Nav extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.changeLocation(this.state.value)
+    console.log(this.props.searchLocation)
+    this.props.changeLocation(this.state.value);
+    this.props.searchLocation(this.state.value);
+    // invoke apiSearch here
   }
 
   render() {
@@ -32,6 +36,11 @@ class Nav extends Component {
     )
   }
 
+}
+
+Nav.propTypes = {
+  changeLocation: PropTypes.func.isRequired,
+  searchLocation: PropTypes.func.isRequired
 }
 
 export default Nav;
