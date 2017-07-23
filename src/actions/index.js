@@ -1,20 +1,39 @@
 import api from '../config/api';
 import axios from 'axios';
-import { REQUEST_WEATHER } from './actionTypes';
+import { REQUEST_WEATHER, FETCHING_WEATHER, FETCHING_WEATHER_SUCCESS, FETCHING_WEATHER_FAILURE } from './actionTypes';
 
 
-function requestWeather (city) {
+function fetchingWeather() {
+  return {
+    type: FETCHING_WEATHER
+  }
+}
+
+function fetchingWeatherSuccess() {
+  return {
+    type: FETCHING_WEATHER_SUCCESS
+  }
+}
+
+function fetchingWeatherFailure() {
+  return {
+    type: FETCHING_WEATHER_FAILURE
+  }
+}
+
+function requestWeather (weather) {
   return {
     type: REQUEST_WEATHER,
-    city
+    weather
   }
 }
 
 export function fetchAPI (city) {
   return function (dispatch) {
-    // dispatch(fetchingData)
+    dispatch(fetchingWeather());
     return axios(api(city))
       .then( (data) => dispatch(requestWeather(data.data)) )
-      // .catch( () => dispatch(err) )
+      .then( () => dispatch(fetchingWeatherSuccess()) )
+      .catch( () => dispatch(fetchingWeatherFailure()) )
   }
 }
