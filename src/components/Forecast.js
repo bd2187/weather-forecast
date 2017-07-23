@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function foo (minTemp, maxTemp, unit) {
+function temp (minTemp, maxTemp, unit) {
   return (
     <div>
       <p>Min: {minTemp} {unit}</p>
@@ -15,10 +15,10 @@ function Day ({day, unit}) {
   return (
     <li>
       <p>Date: {day.date}</p>
-
+      <img src={day.day.condition.icon}/>
       {(unit === "f")
-        ? foo(day.day.mintemp_f, day.day.maxtemp_f, unit)
-        : foo(day.day.mintemp_c, day.day.maxtemp_c, unit)
+        ? temp(day.day.mintemp_f, day.day.maxtemp_f, unit)
+        : temp(day.day.mintemp_c, day.day.maxtemp_c, unit)
       }
     </li>
   )
