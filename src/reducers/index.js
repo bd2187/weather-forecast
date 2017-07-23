@@ -1,7 +1,5 @@
-import {
-  CHANGE_LOCATION, FETCHING_WEATHER,
-  LOAD_FORECAST, FETCHING_WEATHER_SUCCESS,
-  FETCHING_WEATHER_FAILURE} from '../actions/actionTypes';
+import { CHANGE_LOCATION } from '../actions/actionTypes';
+import forecastReducer from './forecastReducer';
 import { combineReducers } from 'redux';
 
 /*
@@ -16,7 +14,6 @@ state = {
 }
 */
 
-
 function locationReducer (state = null, action) {
   switch (action.type) {
     case CHANGE_LOCATION:
@@ -26,22 +23,10 @@ function locationReducer (state = null, action) {
   }
 }
 
-const initialState = {
-  forecastArr: [],
-  isFetching: false,
-  error: ''
-}
-
-function forecastReducer (state = initialState, action) {
+function unitReducer (state = 'f', action) {
   switch (action.type) {
-    case LOAD_FORECAST:
-      return {...state, forecastArr: action.forecast.forecast.forecastday};
-    case FETCHING_WEATHER:
-      return {...state, isFetching: true};
-    case FETCHING_WEATHER_SUCCESS:
-      return {...state, isFetching: false, error: ''};
-    case FETCHING_WEATHER_FAILURE:
-      return {...state, isFetching: false, error: action.error};
+    case 'CHANGE_UNIT':
+      return state;
     default:
       return state;
   }
@@ -49,7 +34,8 @@ function forecastReducer (state = initialState, action) {
 
 const rootReducer = combineReducers({
   location: locationReducer,
-  forecast: forecastReducer
+  forecast: forecastReducer,
+  unit: unitReducer
 });
 
 export default rootReducer;

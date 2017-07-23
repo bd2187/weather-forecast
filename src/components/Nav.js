@@ -20,6 +20,7 @@ class Nav extends Component {
     console.log(this.props.searchLocation)
     this.props.changeLocation(this.state.value);
     this.props.searchLocation(this.state.value);
+    this.setState({value: ''});
     // invoke apiSearch here
   }
 

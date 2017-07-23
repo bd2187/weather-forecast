@@ -1,7 +1,6 @@
 import {
   CHANGE_LOCATION, FETCHING_WEATHER,
-  LOAD_FORECAST, FETCHING_WEATHER_SUCCESS,
-  FETCHING_WEATHER_FAILURE } from './actionTypes';
+  FETCHING_WEATHER_SUCCESS, FETCHING_WEATHER_FAILURE } from './actionTypes';
 import axios from 'axios';
 import api from '../config/api';
 
@@ -12,22 +11,16 @@ export function changeLocation (location) {
   }
 }
 
-function loadForecast (forecast) {
-  return {
-    type: LOAD_FORECAST,
-    forecast
-  }
-}
-
 function fetchingWeather () {
   return {
     type: FETCHING_WEATHER
   }
 }
 
-function fetchingWeatherSuccess () {
+function fetchingWeatherSuccess (forecast) {
   return {
-    type: FETCHING_WEATHER_SUCCESS
+    type: FETCHING_WEATHER_SUCCESS,
+    forecast
   }
 }
 
@@ -42,8 +35,7 @@ export function searchLocation (location) {
   return function (dispatch) {
     dispatch( fetchingWeather() )
     axios.get(api(location))
-      .then( (data) => dispatch(loadForecast(data.data)) )
-      .then( () => dispatch(fetchingWeatherSuccess()) )
+      .then( (data) => dispatch(fetchingWeatherSuccess(data.data)) )
       .catch( () => dispatch(fetchingWeatherFailure()) )
   }
 }
