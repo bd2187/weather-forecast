@@ -11,6 +11,8 @@ export function changeLocation (location) {
   }
 }
 
+
+
 function fetchingWeather () {
   return {
     type: FETCHING_WEATHER
@@ -51,6 +53,9 @@ export function searchLocation (location) {
   }
 }
 
+
+
+
 export function currentLocationCurrentWeather (lon, lat) {
   return function (dispatch) {
     dispatch( fetchingWeather() )
@@ -60,6 +65,19 @@ export function currentLocationCurrentWeather (lon, lat) {
         dispatch(changeLocation(data.data.location.name));
         dispatch(updateCurrentWeather(data.data.current))
       })
+      .then(dispatch(trackingLocationSuccessful()))
       .catch(() => dispatch(fetchingWeatherFailure()))
+  }
+}
+
+export function trackingLocation () {
+  return {
+    type: 'TRACKING_LOCATION'
+  }
+}
+
+function trackingLocationSuccessful () {
+  return {
+    type: 'TRACKING_LOCATION_SUCCESSFUL'
   }
 }

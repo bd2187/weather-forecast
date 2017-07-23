@@ -10,7 +10,8 @@ state = {
     isFetching: false,
     error: ''
   },
-  unit: f
+  unit: f,
+  trackingLocation: false
 }
 */
 
@@ -32,10 +33,22 @@ function unitReducer (state = 'f', action) {
   }
 }
 
+function trackingLocationReducer (state = false, action) {
+  switch (action.type) {
+    case 'TRACKING_LOCATION':
+      return true
+    case 'TRACKING_LOCATION_SUCCESSFUL':
+      return false;
+    default:
+      return state;
+  }
+}
+
 const rootReducer = combineReducers({
   location: locationReducer,
   forecast: forecastReducer,
-  unit: unitReducer
+  unit: unitReducer,
+  trackingLocation: trackingLocationReducer
 });
 
 export default rootReducer;

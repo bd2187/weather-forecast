@@ -27,11 +27,12 @@ Day.propTypes = {
   day: PropTypes.object.isRequired
 }
 
-function Forecast ({forecast, error, isFetching, unit}) {
+function Forecast ({forecast, error, isFetching, unit, tracking}) {
   return (
     <div className="forecast">
       <h1>Forecast</h1>
-      { isFetching && <p>Loading</p> }
+      { tracking && <p>TRACKING LOCATION</p> }
+      { isFetching && <p>Loading Weather</p> }
       { error
         ? <p>Error</p>
         : forecast.map( function(day, index) {
@@ -51,7 +52,8 @@ Forecast.propTypes = {
   forecast: PropTypes.array.isRequired,
   error: PropTypes.string.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  unit: PropTypes.string.isRequired
+  unit: PropTypes.string.isRequired,
+  tracking: PropTypes.bool.isRequired
 }
 
 export default Forecast;
