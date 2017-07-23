@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { requestWeather } from '../actions/';
 
 class SearchBarContainer extends Component {
   constructor(props) {
@@ -7,12 +10,15 @@ class SearchBarContainer extends Component {
       value: ''
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(e){
-    this.setState({value: e.target.value})
+    this.setState({value: e.target.value});
   }
   handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
+    this.props.requestWeather(this.state.value);
+    this.setState({value: ''});
   }
   render() {
     return (
@@ -33,4 +39,11 @@ class SearchBarContainer extends Component {
   }
 }
 
-export default SearchBarContainer;
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({requestWeather}, dispatch);
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SearchBarContainer);
