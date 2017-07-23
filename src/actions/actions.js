@@ -31,11 +31,22 @@ function fetchingWeatherFailure () {
   }
 }
 
+function updateCurrentWeather (currentTemp) {
+  return {
+    type: 'UPDATE_CURRENT_WEATHER',
+    currentTemp
+  }
+}
+
 export function searchLocation (location) {
   return function (dispatch) {
     dispatch( fetchingWeather() )
     axios.get(api(location))
-      .then( (data) => dispatch(fetchingWeatherSuccess(data.data)) )
-      .catch( () => dispatch(fetchingWeatherFailure()) )
+      .then((data) => {
+        dispatch(fetchingWeatherSuccess(data.data));
+        dispatch(changeLocation(data.data.location.name));
+        dispatch(updateCurrentWeather(data.data.current))
+      })
+      .catch(() => dispatch(fetchingWeatherFailure()))
   }
 }

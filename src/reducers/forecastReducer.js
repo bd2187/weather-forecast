@@ -4,6 +4,7 @@ import {
 
 const initialState = {
   forecastArr: [],
+  currentTemp: {},
   isFetching: false,
   error: ''
 }
@@ -21,6 +22,8 @@ export default function forecastReducer (state = initialState, action) {
       };
     case FETCHING_WEATHER_FAILURE:
       return {...state, isFetching: false, error: action.error};
+    case 'UPDATE_CURRENT_WEATHER':
+      return {...state, currentTemp: action.currentTemp}
     default:
       return state;
   }

@@ -2,18 +2,14 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import NavContainer from '../containers/NavContainer';
-import ForecastContainer from '../containers/ForecastContainer';
-
-function Form () {
-  return <h1>Form</h1>
-}
+import App from '../components/App';
 
 const routes = (
   <BrowserRouter>
     <div>
       <NavContainer />
       <Switch>
-        <Route path="/" component={ForecastContainer}/>
+        <Route path="/" component={App}/>
       </Switch>
     </div>
   </BrowserRouter>
