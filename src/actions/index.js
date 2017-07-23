@@ -1,13 +1,20 @@
 import api from '../config/api';
 import axios from 'axios';
+import { REQUEST_WEATHER } from './actionTypes';
 
-const REQUEST_WEATHER = 'REQUEST_WEATHER';
 
-export function requestWeather (city) {
-  // dispatch()
-  axios(api(city))
+function requestWeather (city) {
   return {
     type: REQUEST_WEATHER,
     city
+  }
+}
+
+export function fetchAPI (city) {
+  return function (dispatch) {
+    // dispatch(fetchingData)
+    return axios(api(city))
+      .then( (data) => dispatch(requestWeather(data.data)) )
+      // .catch( () => dispatch(err) )
   }
 }

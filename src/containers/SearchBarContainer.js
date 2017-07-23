@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { requestWeather } from '../actions/';
+import { fetchAPI } from '../actions/';
 
 class SearchBarContainer extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class SearchBarContainer extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    this.props.requestWeather(this.state.value);
+    this.props.fetchAPI(this.state.value);
     this.setState({value: ''});
   }
   render() {
@@ -40,7 +40,7 @@ class SearchBarContainer extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({requestWeather}, dispatch);
+  return bindActionCreators({fetchAPI}, dispatch);
 }
 
 export default connect(
