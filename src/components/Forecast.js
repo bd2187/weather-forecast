@@ -11,7 +11,6 @@ function temp (minTemp, maxTemp, unit) {
 }
 
 function Day ({day, unit}) {
-  console.log(day)
   return (
     <li>
       <p>Date: {day.date}</p>

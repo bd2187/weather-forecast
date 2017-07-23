@@ -4,7 +4,6 @@ import CurrentTemp from '../components/CurrentTemp';
 import { connect } from 'react-redux';
 
 function CurrentTempContainer ({currentTemp, unit}) {
-  console.log(currentTemp, unit)
   return (
     <CurrentTemp
       currentTemp={currentTemp}

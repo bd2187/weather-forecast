@@ -7,7 +7,6 @@ import Nav from '../components/Nav';
 import { changeLocation, searchLocation } from '../actions/actions';
 
 function NavContainer (props) {
-  console.log(props);
   return (
     <Nav changeLocation={props.changeLocation} searchLocation={props.searchLocation} />
   )

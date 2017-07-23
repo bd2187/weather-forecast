@@ -2,7 +2,7 @@ import {
   CHANGE_LOCATION, FETCHING_WEATHER,
   FETCHING_WEATHER_SUCCESS, FETCHING_WEATHER_FAILURE } from './actionTypes';
 import axios from 'axios';
-import api from '../config/api';
+import api, { apiLonLat } from '../config/api';
 
 export function changeLocation (location) {
   return {
@@ -42,6 +42,19 @@ export function searchLocation (location) {
   return function (dispatch) {
     dispatch( fetchingWeather() )
     axios.get(api(location))
+      .then((data) => {
+        dispatch(fetchingWeatherSuccess(data.data));
+        dispatch(changeLocation(data.data.location.name));
+        dispatch(updateCurrentWeather(data.data.current))
+      })
+      .catch(() => dispatch(fetchingWeatherFailure()))
+  }
+}
+
+export function currentLocationCurrentWeather (lon, lat) {
+  return function (dispatch) {
+    dispatch( fetchingWeather() )
+    axios.get(apiLonLat(lon, lat))
       .then((data) => {
         dispatch(fetchingWeatherSuccess(data.data));
         dispatch(changeLocation(data.data.location.name));
