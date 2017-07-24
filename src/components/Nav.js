@@ -28,10 +28,10 @@ class Nav extends Component {
       <form onSubmit={this.handleSubmit}>
         <input
           type="text"
-          placeholder="Search Location"
+          placeholder="Paris, FR"
           value={this.state.value}
           onChange={this.handleChange}/>
-        <button>Search</button>
+        <button disabled={!this.state.value}>Search</button>
       </form>
     )
   }

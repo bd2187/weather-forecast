@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Loading from './Loading';
 
 function dayOfWeek (date) {
   var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -38,10 +39,10 @@ function Forecast ({forecast, error, isFetching, unit, tracking}) {
   return (
     <div className="forecast">
       <h1>Forecast</h1>
-      { tracking && <p>TRACKING LOCATION</p> }
-      { isFetching && <p>Loading Weather</p> }
+      { tracking && <Loading text="Tracking Location"/> }
+      { isFetching && <Loading text="Loading Weather"/> }
       { error
-        ? <p>{error}. Try another search.</p>
+        ? <p>{error}. Try another location.</p>
         : forecast.map( function(day, index) {
           return (
             <Day
