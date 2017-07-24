@@ -34,7 +34,7 @@ function Forecast ({forecast, error, isFetching, unit, tracking}) {
       { tracking && <p>TRACKING LOCATION</p> }
       { isFetching && <p>Loading Weather</p> }
       { error
-        ? <p>Error</p>
+        ? <p>{error}. Try another search.</p>
         : forecast.map( function(day, index) {
           return (
             <Day

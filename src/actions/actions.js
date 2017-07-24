@@ -11,15 +11,7 @@ import {
 import axios from 'axios';
 import api, { apiLonLat } from '../config/api';
 
-export function changeLocation (location) {
-  return {
-    type: CHANGE_LOCATION,
-    location
-  }
-}
-
-
-
+// =============== WEATHER REDUCERS
 function fetchingWeather () {
   return {
     type: FETCHING_WEATHER
@@ -33,10 +25,10 @@ function fetchingWeatherSuccess (forecast) {
   }
 }
 
-function fetchingWeatherFailure () {
+function fetchingWeatherFailure (err) {
   return {
     type: FETCHING_WEATHER_FAILURE,
-    error: 'ERROR'
+    error: err.toString()
   }
 }
 
@@ -44,6 +36,15 @@ function updateCurrentWeather (currentTemp) {
   return {
     type: 'UPDATE_CURRENT_WEATHER',
     currentTemp
+  }
+}
+
+
+// =============== LOCATION REDUCERS
+export function changeLocation (location) {
+  return {
+    type: CHANGE_LOCATION,
+    location
   }
 }
 
@@ -59,13 +60,9 @@ export function searchLocation (location) {
         ));
         dispatch(updateCurrentWeather(data.data.current))
       })
-      .catch(() => dispatch(fetchingWeatherFailure()))
+      .catch((err) => dispatch(fetchingWeatherFailure(err)))
   }
 }
-
-
-
-
 
 export function currentLocationCurrentWeather (lon, lat) {
   return function (dispatch) {
@@ -104,7 +101,7 @@ export function trackingLocationFailure () {
 
 
 
-
+// =============== UNIT REDUCER
 export function changeUnit () {
   return {
     type: CHANGE_UNIT

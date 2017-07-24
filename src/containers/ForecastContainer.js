@@ -15,7 +15,6 @@ class ForecastContainer extends Component {
     this.fail = this.fail.bind(this);
   }
   success(position) {
-    console.log(position.coords.latitude, position.coords.longitude)
     this.props.currentLocationCurrentWeather(
       position.coords.latitude,
       position.coords.longitude
@@ -36,7 +35,6 @@ class ForecastContainer extends Component {
     }
   }
   render() {
-    console.log(this.props)
     return <Forecast {...this.props} />
   }
 }
