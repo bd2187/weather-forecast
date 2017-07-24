@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function ChangeUnit ({unit, changeUnit}) {
   console.log(unit, changeUnit)
   return (
-    <button onClick={changeUnit}>
+    <button onClick={changeUnit} className="changeUnitButton">
       {unit === 'f'
         ? 'c'
         : 'f'

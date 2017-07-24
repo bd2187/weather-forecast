@@ -1,0 +1,96 @@
+@import 'normalize';
+
+* {
+   box-sizing: border-box;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+body {
+  padding: 0;
+}
+
+#app {
+  background: green;
+  min-height: 100vh;
+}
+
+.container {
+  background: firebrick;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.searchBar {
+  // background: pink;
+  text-align: right;
+  padding: .5em 0;
+}
+
+.currentTemp,
+.forecast {
+  padding: 3em 0;
+}
+
+.currentTemp {
+  background: #FFF;
+  text-align: center;
+  min-height: 289px;
+  img {
+    // background: green;
+    width: 5em;
+  }
+  p {
+    font-size: 5em;
+    // background: red;
+    margin-top: -20px;
+  }
+}
+
+.changeUnitButton {
+  // background: orange;
+  font-size: 1.5em;
+  text-align: center;
+  vertical-align: middle;
+
+  margin-top: -20px;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  float: right;
+}
+
+.forecast {
+  // background: navy;
+  li {
+    // background: firebrick;
+    margin-bottom: .5em;
+    position: relative;
+  }
+  img, .weatherInfo { float: left; }
+  img {
+    // background: green;
+    width: 20%;
+  }
+  .weatherInfo {
+    // background: pink;
+    width: 80%;
+    padding-left: .5em;
+
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .dayText {
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+
+  .tempText {
+    font-size: 1.2em;
+  }
+}

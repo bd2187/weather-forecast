@@ -10,23 +10,20 @@ function dayOfWeek (date) {
 }
 
 function temp (minTemp, maxTemp, unit) {
-  return (
-    <div>
-      <p>Min: {minTemp} &deg;{unit}</p>
-      <p>Max: {maxTemp} &deg;{unit}</p>
-    </div>
-  )
+  return <p className="tempText">{minTemp} &deg;{unit} / {maxTemp} &deg;{unit}</p>
 }
 
 function Day ({day, unit}) {
   return (
-    <li>
+    <li className="clearfix">
       <img src={day.day.condition.icon}/>
-      <p>{dayOfWeek(day.date)}</p>
-      {(unit === "f")
-        ? temp(day.day.mintemp_f, day.day.maxtemp_f, unit)
-        : temp(day.day.mintemp_c, day.day.maxtemp_c, unit)
-      }
+      <div className="weatherInfo">
+        <p className="dayText">{dayOfWeek(day.date)}</p>
+        {(unit === "f")
+          ? temp(day.day.mintemp_f, day.day.maxtemp_f, unit)
+          : temp(day.day.mintemp_c, day.day.maxtemp_c, unit)
+        }
+      </div>
     </li>
   )
 }
@@ -38,7 +35,6 @@ Day.propTypes = {
 function Forecast ({forecast, error, isFetching, unit, tracking}) {
   return (
     <div className="forecast">
-      <h1>Forecast</h1>
       { tracking && <Loading text="Tracking Location"/> }
       { isFetching && <Loading text="Loading Weather"/> }
       { error
