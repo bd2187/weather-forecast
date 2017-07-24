@@ -33,7 +33,7 @@ class Loading extends Component {
   }
   render() {
     return (
-      <p>
+      <p className="loadingText">
         {this.state.text}
       </p>
     )

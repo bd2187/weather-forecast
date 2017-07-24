@@ -1,13 +1,13 @@
 import { CHANGE_UNIT } from '../actions/actionTypes'
 
-export function unitReducer (state = 'f', action) {
+export function unitReducer (state = 'F', action) {
   switch (action.type) {
     case CHANGE_UNIT:
-      if (state === 'f') {
-        return 'c';
+      if (state === 'F') {
+        return 'C';
       }
       else {
-        return 'f';
+        return 'F';
       }
     default:
       return state;

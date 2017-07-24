@@ -6,7 +6,7 @@ import ChangeUnitContainer from '../containers/ChangeUnitContainer'
 
  export default function App () {
   return (
-    <div className="container clearfix">
+    <div className="container clearfix" id="main">
       <CurrentTempContainer />
       <ChangeUnitContainer />
       <ForecastContainer />

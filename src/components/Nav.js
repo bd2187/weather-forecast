@@ -31,7 +31,9 @@ class Nav extends Component {
           placeholder="Paris, FR"
           value={this.state.value}
           onChange={this.handleChange}/>
-        <button disabled={!this.state.value}>Search</button>
+        <button disabled={!this.state.value}>
+          <i className="fa fa-search" aria-hidden="true"></i>
+        </button>
       </form>
     )
   }

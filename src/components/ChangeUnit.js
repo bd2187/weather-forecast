@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function ChangeUnit ({unit, changeUnit}) {
-  console.log(unit, changeUnit)
   return (
     <button onClick={changeUnit} className="changeUnitButton">
-      {unit === 'f'
-        ? 'c'
-        : 'f'
-      }
+      &deg;{unit === 'F'
+            ? 'C'
+            : 'F'
+          }
     </button>
   )
 }

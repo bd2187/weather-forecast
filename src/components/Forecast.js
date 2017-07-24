@@ -19,7 +19,7 @@ function Day ({day, unit}) {
       <img src={day.day.condition.icon}/>
       <div className="weatherInfo">
         <p className="dayText">{dayOfWeek(day.date)}</p>
-        {(unit === "f")
+        {(unit === "F")
           ? temp(day.day.mintemp_f, day.day.maxtemp_f, unit)
           : temp(day.day.mintemp_c, day.day.maxtemp_c, unit)
         }
@@ -38,7 +38,7 @@ function Forecast ({forecast, error, isFetching, unit, tracking}) {
       { tracking && <Loading text="Tracking Location"/> }
       { isFetching && <Loading text="Loading Weather"/> }
       { error
-        ? <p>{error}. Try another location.</p>
+        ? <p className="errorText">{error}. Try another location.</p>
         : forecast.map( function(day, index) {
           return (
             <Day
