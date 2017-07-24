@@ -8,7 +8,6 @@ import ChangeUnitContainer from '../containers/ChangeUnitContainer'
   return (
     <div className="container clearfix" id="main">
       <CurrentTempContainer />
-      <ChangeUnitContainer />
       <ForecastContainer />
     </div>
   )

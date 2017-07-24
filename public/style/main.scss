@@ -1,5 +1,6 @@
 @import 'normalize';
 $grey: #D9D9D9;
+$darkGreyFontColor: #363636;
 
 * {
    box-sizing: border-box;
@@ -12,25 +13,25 @@ h1, h2, h3, p {
 body {
   font-family: 'Quicksand', sans-serif;
   padding: 0;
-  color: #363636;
+  color: $darkGreyFontColor;
 }
 
 #app {
   background: $grey;
-  min-height: 100vh;
 }
 #main {
   min-height: 100vh;
 }
 
 .container {
-  background: $grey;
+  // background: $grey;
+  background: pink;
   width: 90%;
+  // max-width: 435.59px;
   margin: 0 auto;
 }
 
 .searchBar {
-  // background: pink;
   text-align: right;
   padding: 1em 0;
 
@@ -62,66 +63,75 @@ body {
   padding: 3em .5em;
 }
 
-.todayText {
-  background: pink;
-  color: #FFF;
-  box-shadow: 0px 0px 17px 1px rgba(99,99,99,1);
-  display: inline-block;
-  padding: .5em .75em;
-  width: inherit;
-  font-size: 1.2em;
-  height: 41.19px;
-  background: #C9C9C9;
-
-  margin-left: 10px;
-  margin-bottom: -41px; /* 41.19px / 2 */
-}
-
 .currentTemp {
+  position: relative;
   background: #FFF;
   text-align: center;
   min-height: 289px;
+  max-width: 503.09px;
+  margin: 0 auto;
   img {
-    // background: green;
     width: 5em;
   }
-  p {
+  .tempText {
     font-size: 5em;
-    // background: red;
     margin-top: -20px;
   }
 
   box-shadow: 0px 7px 33px 2px rgba(99,99,99,1);
+
+  .todayText {
+    color: #FFF;
+    box-shadow: 0px 0px 17px 1px rgba(99,99,99,1);
+    display: inline-block;
+    padding: .3em .6em;
+    // width: inherit;
+    font-size: 1.2em;
+    background: #C9C9C9;
+
+    // margin-left: 10px;
+    // margin-bottom: -41px; /* 41.19px / 2 */
+    position: absolute;
+    top: -17.75px; /* 35.5px / 2 */
+    left: 10px;
+  }
 }
 
 .changeUnitButton {
-  // background: orange;
   font-size: 1.5em;
   text-align: center;
   vertical-align: middle;
 
-  margin-top: -20px;
-  margin-right: 10px;
   border-radius: 100%;
   width: 50px;
   height: 50px;
   float: right;
+
+  position: relative;
+  bottom: -25px; /* 50px / 2 */
+  right: 10px;
+
+  transition: box-shadow .5s;
+  box-shadow: 0px 0px 17px 1px rgba(99,99,99,1);
+  background: #C9C9C9;
+  border: none;
+
+  &:focus { outline: none; }
+  &:hover { box-shadow: 0px 0px 17px 5px rgba(99,99,99,1); }
+  &:active { margin-top: 5px;}
 }
 
 .forecast {
-  // background: navy;
+  background: green;
+  max-width: 435.59px;
+  margin: 0 auto;
   li {
-    // background: firebrick;
     margin-bottom: .5em;
     position: relative;
   }
   img, .weatherInfo { float: left; }
-  img {
-    // background: green;
-    width: 20%;
-  }
+  img { width: 20%; }
   .weatherInfo {
-    // background: pink;
     width: 80%;
     padding-left: .5em;
 
