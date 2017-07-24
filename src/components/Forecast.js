@@ -1,11 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+function dayOfWeek (date) {
+  var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  var d = new Date(date)
+  // console.log(d)
+  return days[d.getDay()];
+}
+
 function temp (minTemp, maxTemp, unit) {
   return (
     <div>
-      <p>Min: {minTemp} {unit}</p>
-      <p>Max: {maxTemp} {unit}</p>
+      <p>Min: {minTemp} &deg;{unit}</p>
+      <p>Max: {maxTemp} &deg;{unit}</p>
     </div>
   )
 }
@@ -13,8 +20,8 @@ function temp (minTemp, maxTemp, unit) {
 function Day ({day, unit}) {
   return (
     <li>
-      <p>Date: {day.date}</p>
       <img src={day.day.condition.icon}/>
+      <p>{dayOfWeek(day.date)}</p>
       {(unit === "f")
         ? temp(day.day.mintemp_f, day.day.maxtemp_f, unit)
         : temp(day.day.mintemp_c, day.day.maxtemp_c, unit)

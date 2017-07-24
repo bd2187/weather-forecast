@@ -9,8 +9,8 @@ function CurrentTemp ({currentTemp, unit, location}) {
     <div>
       <h1>Current temperature for {location}</h1>
       {unit === 'f'
-        ? <p>{currentTemp.temp_f} {unit}</p>
-        : <p>{currentTemp.temp_c} {unit}</p>
+        ? <p>{currentTemp.temp_f} &deg;{unit}</p>
+        : <p>{currentTemp.temp_c} &deg;{unit}</p>
       }
       <img src={currentTemp.condition.icon}/>
     </div>
