@@ -23,6 +23,7 @@ function Day ({day, unit}) {
           ? temp(day.day.mintemp_f, day.day.maxtemp_f, unit)
           : temp(day.day.mintemp_c, day.day.maxtemp_c, unit)
         }
+        <p>{day.day.condition.text}</p>
       </div>
     </li>
   )

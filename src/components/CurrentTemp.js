@@ -22,6 +22,7 @@ function CurrentTemp ({currentTemp, unit, location}) {
           ? <p className="tempText">{currentTemp.temp_f} &deg;{unit}</p>
           : <p className="tempText">{currentTemp.temp_c} &deg;{unit}</p>
         }
+        <p className="currentCondition">{currentTemp.condition.text}</p>
         <ChangeUnitContainer />
       </div>
     </div>

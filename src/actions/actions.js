@@ -69,7 +69,7 @@ export function currentLocationCurrentWeather (lon, lat) {
     dispatch( fetchingWeather() )
     axios.get(apiLonLat(lon, lat))
       .then((data) => {
-        console.log(data)
+        console.log(data);
         dispatch(fetchingWeatherSuccess(data.data));
         dispatch(changeLocation(
           `${data.data.location.name}, ${data.data.location.region}`

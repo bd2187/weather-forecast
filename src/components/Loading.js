@@ -28,7 +28,6 @@ class Loading extends Component {
     }, this.props.speed);
   }
   componentWillUnmount() {
-    console.log('Clear Interval');
     window.clearInterval(this.interval);
   }
   render() {

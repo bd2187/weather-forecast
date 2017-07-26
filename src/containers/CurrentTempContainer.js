@@ -9,8 +9,7 @@ function CurrentTempContainer ({currentTemp, unit, location}) {
       currentTemp={currentTemp}
       unit={unit}
       location={location}/>
-
-  )
+  );
 }
 
 function mapStateToProps (state) {

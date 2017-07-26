@@ -9,7 +9,7 @@ import '../public/style/main.scss';
 import routes from './config/routes';
 import rootReducer from './reducers/index';
 
-const store = createStore(rootReducer, applyMiddleware(thunk, logger))
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 render (
   <Provider store={store}>

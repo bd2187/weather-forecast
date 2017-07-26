@@ -84,6 +84,8 @@ html {
   input[type="text"] {
     padding-left: .5em;
     width: 15.625em; /* 250px / 16px */
+    -webkit-border-radius: 0;
+    border-radius: 0;
     &:focus {
       outline: none;
     }
